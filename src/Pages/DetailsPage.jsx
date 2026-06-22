@@ -1,6 +1,13 @@
+import { useState } from "react"
 import Header from "../Components/Header"
 
 const DetailsPage = () => {
+
+    const [eventDetails,setEventDetails] = useState([])
+
+    
+
+
     return (
         (
         <>

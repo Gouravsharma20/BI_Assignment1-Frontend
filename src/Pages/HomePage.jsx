@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react'
+import Header from '../Components/Header.jsx'
 
 const HomePage = () => {
     const [events,setEvents] = useState([])
@@ -23,7 +24,9 @@ const HomePage = () => {
     // const filteredEvents = selectedType ? events.filter((event)=>(event.typeOfEvent === selectedType)):events
 
     return (
-        <div className="bg-light text-dark">
+      <>
+      <Header/>
+      <div className="bg-light text-dark">
           <div className="d-flex justify-content-between align-items-center mb-4">
 
             <h1 className="fw-bold">Meetup Events</h1>
@@ -59,6 +62,9 @@ const HomePage = () => {
     }
   </div>
   </div>
+
+      </>
+        
     )
 }
 
