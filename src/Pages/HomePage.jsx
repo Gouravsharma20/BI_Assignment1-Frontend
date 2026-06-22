@@ -7,19 +7,23 @@ const HomePage = () => {
 
     useEffect(()=>{
         const fetchEvents = async () => {
-            const response = await fetch("https://bi-assignment1-xi.vercel.app/events")
-            const data = await response.json()
-            setEvents(data.EventsList)
+
+          let url = "https://bi-assignment1-xi.vercel.app/events"
+
+          if (selectedType) {
+            url = `https://bi-assignment1-xi.vercel.app/events/eventType/${selectedType}`
+          }
+          const response = await fetch(url)
+          const data = await response.json()
+          setEvents(selectedType ? data.foundevent : data.EventList)
         }
         fetchEvents()
-    },[])
+    },[selectedType])
 
     const filteredEvents = selectedType ? events.filter((event)=>(event.typeOfEvent === selectedType)):events
 
     return (
         <div className="bg-light text-dark">
-
-
           <div className="d-flex justify-content-between align-items-center mb-4">
 
             <h1 className="fw-bold">Meetup Events</h1>
@@ -29,10 +33,9 @@ const HomePage = () => {
                     onChange={(e) => setSelectedType(e.target.value)}
                 >
                     <option value="">Select Event Type</option>
-                    <option value="Offline Event">Offline Event</option>
-                    <option value="Online Event">Online Event</option>
+                      <option value="offline Event">Offline Event</option>
+                      <option value="online Event">Online Event</option>
                 </select>
-
           </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
           {filteredEvents.map((event)=>(
