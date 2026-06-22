@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 const HomePage = () => {
     const [events,setEvents] = useState([])
+    const [selectedType,setSelectedType] = useState("")
 
     useEffect(()=>{
         const fetchEvents = async () => {
@@ -12,11 +13,29 @@ const HomePage = () => {
         }
         fetchEvents()
     },[])
+
+    const filteredEvents = selectedType ? events.filter((event)=>(event.typeOfEvent === selectedType)):events
+
     return (
         <div className="bg-light text-dark">
-        <h1>Meetup Events</h1>
+
+
+          <div className="d-flex justify-content-between align-items-center mb-4">
+
+            <h1 className="fw-bold">Meetup Events</h1>
+                <select
+                    className="form-select w-auto"
+                    value={selectedType}
+                    onChange={(e) => setSelectedType(e.target.value)}
+                >
+                    <option value="">Select Event Type</option>
+                    <option value="Offline Event">Offline Event</option>
+                    <option value="Online Event">Online Event</option>
+                </select>
+
+          </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          {events.map((event)=>(
+          {filteredEvents.map((event)=>(
             <div class="col" key={event._id}>
     <div class="card h-100">
 
