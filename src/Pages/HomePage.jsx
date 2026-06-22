@@ -1,16 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom' 
 import Header from '../Components/Header.jsx'
 
 const HomePage = () => {
     const [events,setEvents] = useState([])
+    const navigate = useNavigate()
     const [selectedType,setSelectedType] = useState("")
 
     useEffect(()=>{
         const fetchEvents = async () => {
-
           let url = "https://bi-assignment1-xi.vercel.app/events"
-
           if (selectedType) {
             url = `https://bi-assignment1-xi.vercel.app/events/eventType/${selectedType}`
           }
@@ -42,7 +42,7 @@ const HomePage = () => {
           </div>
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {events.map((event)=>(
-            <div className="col" key={event._id}>
+            <div className="col" key={event._id} onClick={()=>navigate(`/events/${event._id}`)} style={{cursor:'pointer'}}>
     <div className="card h-100">
 
       <div className="position-relative">
