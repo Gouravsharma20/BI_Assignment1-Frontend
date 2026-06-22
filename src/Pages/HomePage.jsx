@@ -15,12 +15,12 @@ const HomePage = () => {
           }
           const response = await fetch(url)
           const data = await response.json()
-          setEvents(selectedType ? data.foundevent : data.EventList)
+          setEvents(selectedType ? data.foundevent : data.EventsList)
         }
         fetchEvents()
     },[selectedType])
 
-    const filteredEvents = selectedType ? events.filter((event)=>(event.typeOfEvent === selectedType)):events
+    // const filteredEvents = selectedType ? events.filter((event)=>(event.typeOfEvent === selectedType)):events
 
     return (
         <div className="bg-light text-dark">
@@ -37,10 +37,10 @@ const HomePage = () => {
                       <option value="online Event">Online Event</option>
                 </select>
           </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          {filteredEvents.map((event)=>(
-            <div class="col" key={event._id}>
-    <div class="card h-100">
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          {events.map((event)=>(
+            <div className="col" key={event._id}>
+    <div className="card h-100">
 
       <div className="position-relative">
                                 <img src={event.eventImage} className="card-img-top" alt={event.eventTitle}/>
@@ -48,9 +48,9 @@ const HomePage = () => {
                                     {event.typeOfEvent}
                                 </span>
                             </div>
-      <div class="card-body">
-        <p class="card-text">{event.createdAt}</p>
-        <h5 class="card-title">{event.eventTitle}</h5>
+      <div className="card-body">
+        <p className="card-text">{event.createdAt}</p>
+        <h5 className="card-title">{event.eventTitle}</h5>
       </div>
     </div>
     </div>
