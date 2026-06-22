@@ -33,8 +33,8 @@ const HomePage = () => {
                     onChange={(e) => setSelectedType(e.target.value)}
                 >
                     <option value="">Select Event Type</option>
-                      <option value="offline Event">Offline Event</option>
-                      <option value="online Event">Online Event</option>
+                      <option value="offline">Offline Event</option>
+                      <option value="online">Online Event</option>
                 </select>
           </div>
         <div className="row row-cols-1 row-cols-md-3 g-4">
