@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { use, useState } from 'react'
+import { useState } from 'react'
 
 const Header = ({onSearchResult,onClear}) => {
     const [searchtitle,setSearchTitle] = useState("")
@@ -13,7 +13,7 @@ const Header = ({onSearchResult,onClear}) => {
         const titleData = await titleResponse.json()
         if(titleData.FoundEvent) {
             onSearchResult([titleData.FoundEvent])
-            setIsLoading(true)
+            setIsLoading(false)
             return 
         }
 
@@ -62,7 +62,7 @@ const Header = ({onSearchResult,onClear}) => {
                         onChange={(e)=>setSearchTitle(e.target.value)}
                         style={{outline: 'none', boxShadow: 'none'}}
                     />
-                    {searchtitle && (<button className='btn text-white' style={{ backgroundColor: '#e8523a' }} onClick={handleSearch}>Submit</button>)}
+                    {/* {searchtitle && (<button className='btn text-white' style={{ backgroundColor: '#e8523a' }} onClick={handleSearch}>Submit</button>)} */}
                     {searchtitle && (<button className='btn text-white' style={{ backgroundColor: '#e8523a' }} onClick={handleSearch} disabled={isLoading}>{isLoading ? "Searching..." : "Submit"}</button>)}
                     {searchtitle && (<button className='btn btn-outline-secondary' onClick={handleClear}>Clear</button>)}
                 </div>
