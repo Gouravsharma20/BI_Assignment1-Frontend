@@ -34,7 +34,7 @@
 
               <h1 className="fw-bold">Meetup Events</h1>
                   <select
-                      className="form-select w-auto"
+                      className="form-select w-auto me-4"
                       value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
                   >
