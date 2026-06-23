@@ -45,14 +45,19 @@ const DetailsPage = () => {
                     <img src={event.eventImage} alt="event" 
                          className="img-fluid rounded mb-4" />
 
-                    <h5 className="fw-bold">Details:</h5>
+                    <div className="text-start">
+                        <h5 className="fw-bold">Details:</h5>
                     <p>{event.modelDetails}</p>
 
                     <h5 className="fw-bold">Additional Information:</h5>
                     <p><strong>Dress Code:</strong>{event.dressCode}</p>
                     <p><strong>Age Restrictions:</strong>{event.ageRestrictions}</p>
-
                     <h5 className="fw-bold">Event Tags:</h5>
+
+                    </div>
+
+
+                    
                     <div className="d-flex gap-2 flex-wrap">
                         {event.eventTags.map((tag) => (
                             <span key={tag} className="badge rounded-pill text-white" style={{backgroundColor:'#e8523a'}}>{tag}</span>))}
@@ -68,7 +73,7 @@ const DetailsPage = () => {
                     </div>
 
                     <h6 className="fw-bold">Speakers: ({event.speakers.length})</h6>
-                    <div className="d-flex gap-2 flex-wrap mb-3">
+                    <div className="d-flex justify-content-center gap-3 flex-wrap mb-3">
                         {event.speakers.map((speakerData)=>{return(<div className="border rounded p-2 text-center" style={{width:'120px'}}>
                             <img src={speakerData.speakerimage} alt="speaker"
                                  className="rounded-circle mb-1"
@@ -79,10 +84,10 @@ const DetailsPage = () => {
                         
                     </div>
 
-                    <button className="btn w-100 text-white fw-bold"
+                    {/* <button className="btn w-100 text-white fw-bold"
                             style={{backgroundColor:'#e8523a'}}>
                         RSVP
-                    </button>
+                    </button> */}
                 </div>
 
             </div>
