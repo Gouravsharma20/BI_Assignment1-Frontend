@@ -22,7 +22,7 @@
           fetchEvents()
       },[selectedType])
 
-      const displayEvents = searchedEvent ? [searchedEvent]:events
+      const displayEvents = searchedEvent ? searchedEvent:events
 
       return (
         <>

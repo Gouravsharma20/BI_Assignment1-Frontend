@@ -4,14 +4,35 @@ import { useState } from 'react'
 const Header = ({onSearchResult,onClear}) => {
     const [searchtitle,setSearchTitle] = useState("")
 
-    const handleSearch = async()=>{
-        const response = await fetch(`https://bi-assignment1-xi.vercel.app/events/title/${searchtitle}`)
-        const data = await response.json()
-        if(data.FoundEvent) {
-            onSearchResult(data.FoundEvent)
-        } else {
-            alert("No data found")
+    // const [searchTag,setSearchTag] = useState("")
+
+    // const handleTagSearch = async()=>{
+    //     
+    // }
+
+    // const handleSearch = async()=>{
+    //     
+    //     
+    // }
+
+    const handleSearch = async () => {
+        const titleResponse = await fetch(`https://bi-assignment1-xi.vercel.app/events/title/${searchtitle}`)
+        const titleData = await titleResponse.json()
+        if(titleData.FoundEvent) {
+            onSearchResult([titleData.FoundEvent])
+            return 
         }
+
+        const tagResponse = await fetch(`https://bi-assignment1-xi.vercel.app/events/eventTag/${searchtitle}`)
+        const tagData = await tagResponse.json()
+        if (tagData.foundTag) {
+            onSearchResult(tagData.foundTag)
+            return
+        }
+
+        alert("No event found with this title or tag")
+
+
     }
 
     const handleClear = () => {
