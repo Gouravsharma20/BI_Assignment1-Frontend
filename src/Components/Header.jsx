@@ -12,7 +12,7 @@ const Header = ({onSearchResult,onClear}) => {
         const titleResponse = await fetch(`https://bi-assignment1-xi.vercel.app/events/title/${searchtitle}`)
         const titleData = await titleResponse.json()
         if(titleData.FoundEvent) {
-            onSearchResult([titleData.FoundEvent])
+            onSearchResult(titleData.FoundEvent)
             setIsLoading(false)
             return 
         }
